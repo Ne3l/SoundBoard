@@ -7,7 +7,7 @@ const Note = ({ zoom }) => {
     return (
         <div className="note-row">
             {[...new Array(NUM)].map((e, i) => {
-                return <div key={i} style={{ width: 15 * zoom + 'px' }} className="note" />;
+                return <div key={i} style={{ width: 20 * zoom }} className="note" />;
             })}
         </div>
     );

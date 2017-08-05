@@ -5,7 +5,7 @@ import Keys from './keys/Keys.js';
 import Notes from './notes/Notes';
 
 const KEYS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-const SCALES = [2, 3, 4, 5, 6, 7, 8];
+const SCALES = [3, 4, 5, 6, 7];
 
 class Board extends Component {
     constructor(props) {
@@ -22,7 +22,6 @@ class Board extends Component {
         } else {
             zoom = zoom - 1;
         }
-        console.log(zoom);
         e.preventDefault();
         e.stopPropagation();
         this.setState({ zoom: Math.max(1, zoom) });
