@@ -1,0 +1,17 @@
+.keys {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.key {
+    border: 1px solid #cecece;
+    width: 100%;
+    cursor: pointer;
+}
+
+.key:hover {
+    background-color: #2196f3;
+    color: #fff;
+}
