@@ -17,9 +17,7 @@ const addNote = (state, action) => {
 const removeNote = (state, action) => {
     return {
         ...state,
-        notes: state.notes.filter(
-            e => !(e.scale === action.note.scale && e.sec === action.note.sec)
-        )
+        notes: state.notes.filter(e => e.scale !== action.note.scale || e.sec !== action.note.sec)
     };
 };
 
