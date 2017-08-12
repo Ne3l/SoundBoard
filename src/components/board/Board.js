@@ -1,40 +1,50 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Board.css';
+import Scales from './scale/Scale';
 
-import Keys from './keys/Keys.js';
-import Notes from './notes/Notes';
+const mapStateToProps = (state, props) => {
+    return {
+        play: state.play,
+        time: state.time
+    };
+};
 
-const KEYS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-const SCALES = [3, 4, 5, 6, 7];
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        increaseTime() {
+            dispatch({ type: 'INCREASE_TIME', time: 1.1 });
+        }
+    };
+};
+
+let raf;
 
 class Board extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            zoom: 1
-        };
+    componentWillReceiveProps(nextProps) {
+        if (this.props.play === false && nextProps.play) {
+            raf = window.requestAnimationFrame(this.increaseTime);
+        }
+
+        if (this.props.play && nextProps.play === false) {
+            window.cancelAnimationFrame(raf);
+        }
     }
 
-    handleWheel = e => {
-        let zoom = this.state.zoom;
-        if (e.deltaY < 0) {
-            zoom = zoom + 1;
-        } else {
-            zoom = zoom - 1;
-        }
-        e.preventDefault();
-        e.stopPropagation();
-        this.setState({ zoom: Math.max(1, zoom) });
+    increaseTime = () => {
+        this.props.increaseTime();
+        raf = window.requestAnimationFrame(this.increaseTime);
     };
 
     render() {
         return (
-            <div className="board" onWheel={this.handleWheel}>
-                <Keys keys={KEYS} scales={SCALES} />
-                <Notes keys={KEYS} scales={SCALES} zoom={this.state.zoom} />
+            <div className="board">
+                <Scales />
+                {this.props.play &&
+                    <div style={{ left: 20 + this.props.time }} className="tempoLine" />}
             </div>
         );
     }
 }
 
-export default Board;
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

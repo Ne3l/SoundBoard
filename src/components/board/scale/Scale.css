@@ -1,0 +1,10 @@
+.scales {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.scale {
+    display: flex;
+    flex: 1;
+}

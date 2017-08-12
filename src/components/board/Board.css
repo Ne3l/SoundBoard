@@ -3,3 +3,11 @@
     flex: 1;
     overflow: auto;
 }
+
+.tempoLine {
+    width: 1px;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}

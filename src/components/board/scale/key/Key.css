@@ -7,9 +7,9 @@
 
 .key {
     border: 1px solid #cecece;
-    width: 100%;
     height: 100%;
     cursor: pointer;
+    width: 30px;
 }
 
 .key:hover {
