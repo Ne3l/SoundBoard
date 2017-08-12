@@ -14,6 +14,13 @@ const addNote = (state, action) => {
     };
 };
 
+const removeNote = (state, action) => {
+    return {
+        ...state,
+        notes: state.notes.filter(e => e.scale !== action.note.scale && e.sec !== action.note.sec)
+    };
+};
+
 const changeZoom = (state, action) => {
     return {
         ...state,
@@ -54,6 +61,7 @@ export const reducer = createReducer(
         ADD_NOTE: addNote,
         CHANGE_ZOOM: changeZoom,
         TOGGLE_PLAY: togglePlay,
-        INCREASE_TIME: incTime
+        INCREASE_TIME: incTime,
+        REMOVE_NOTE: removeNote
     }
 );

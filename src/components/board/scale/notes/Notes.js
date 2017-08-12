@@ -18,7 +18,7 @@ class Notes extends Component {
                         <div
                             key={i}
                             onClick={event => {
-                                this.props.addNote(this.props.note, i);
+                                this.props.add(this.props.note, i);
                             }}
                             style={{ width: 20 * this.props.zoom }}
                             className={classNames('note', {
