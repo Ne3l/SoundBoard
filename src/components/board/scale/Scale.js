@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch, props) => {
             dispatch({ type: 'CHANGE_ZOOM', zoom });
         },
         addNote(scale, sec) {
-            let type = this.notes.length ? 'REMOVE_NOTE' : 'ADD_NOTE';
+            let type = this.notes.filter(e => e.sec === sec).length ? 'REMOVE_NOTE' : 'ADD_NOTE';
             let note = {
                 scale,
                 sec
@@ -53,7 +53,6 @@ class Scale extends Component {
     };
 
     render() {
-        console.log(this.props.notes);
         return (
             <div className="scales" onWheel={this.handleWheel}>
                 {NOTES.map(note => {
