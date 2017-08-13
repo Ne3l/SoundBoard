@@ -11,31 +11,10 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-    return {
-        increaseTime() {
-            dispatch({ type: 'INCREASE_TIME', time: 1.1 });
-        }
-    };
+    return {};
 };
 
-let raf;
-
 class Board extends Component {
-    componentWillReceiveProps(nextProps) {
-        if (this.props.play === false && nextProps.play) {
-            raf = window.requestAnimationFrame(this.increaseTime);
-        }
-
-        if (this.props.play && nextProps.play === false) {
-            window.cancelAnimationFrame(raf);
-        }
-    }
-
-    increaseTime = () => {
-        this.props.increaseTime();
-        raf = window.requestAnimationFrame(this.increaseTime);
-    };
-
     render() {
         return (
             <div className="board">

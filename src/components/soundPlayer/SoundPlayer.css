@@ -1,0 +1,9 @@
+.SoundPlayer {
+    background-color: #222;
+    height: 75px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
