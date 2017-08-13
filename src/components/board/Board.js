@@ -20,7 +20,7 @@ class Board extends Component {
             <div className="board">
                 <Scales />
                 {this.props.play &&
-                    <div style={{ left: 20 + this.props.time }} className="tempoLine" />}
+                    <div style={{ left: 30 + this.props.time }} className="tempoLine" />}
             </div>
         );
     }

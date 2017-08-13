@@ -11,6 +11,7 @@ class Notes extends Component {
         return false;
     }
     render() {
+        const width = 60 * this.props.zoom;
         return (
             <div className="notes">
                 {[...new Array(NUM)].map((e, i) => {
@@ -20,7 +21,7 @@ class Notes extends Component {
                             onClick={event => {
                                 this.props.add(this.props.note, i);
                             }}
-                            style={{ width: 20 * this.props.zoom }}
+                            style={{ width }}
                             className={classNames('note', {
                                 active: this.props.notes.some(note => note.sec === i)
                             })}
