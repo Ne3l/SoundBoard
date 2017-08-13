@@ -14,6 +14,10 @@
 }
 
 .note.active,
-.note:hover {
+.note.active:hover {
     background-color: #2196f3;
+}
+
+.note:hover {
+    background-color: rgba(89, 173, 239, 0.72);
 }
