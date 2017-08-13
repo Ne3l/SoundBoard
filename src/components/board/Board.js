@@ -6,7 +6,8 @@ import Scales from './scale/Scale';
 const mapStateToProps = (state, props) => {
     return {
         play: state.play,
-        time: state.time
+        time: state.time,
+        zoom: state.zoom
     };
 };
 
@@ -20,7 +21,10 @@ class Board extends Component {
             <div className="board">
                 <Scales />
                 {this.props.play &&
-                    <div style={{ left: 30 + this.props.time }} className="tempoLine" />}
+                    <div
+                        style={{ left: 30 + this.props.time * this.props.zoom }}
+                        className="tempoLine"
+                    />}
             </div>
         );
     }
