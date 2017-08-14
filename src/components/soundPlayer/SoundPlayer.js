@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch, props) => {
         togglePlay() {
             dispatch({ type: 'TOGGLE_PLAY' });
         },
+        stopPlay() {
+            dispatch({ type: 'STOP_PLAY' });
+        },
         increaseTime() {
             dispatch({ type: 'INCREASE_TIME', time: 1 });
         }
@@ -106,6 +109,7 @@ class SoundPlayer extends Component {
                 <button onClick={this.props.togglePlay}>
                     {this.props.play ? 'Pause' : 'Play'}
                 </button>
+                <button onClick={this.props.stopPlay}>Stop</button>
             </div>
         );
     }

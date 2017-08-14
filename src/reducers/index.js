@@ -42,6 +42,14 @@ const togglePlay = (state, action) => {
     };
 };
 
+const stopPlay = (state, action) => {
+    return {
+        ...state,
+        play: false,
+        time: 0
+    };
+};
+
 const changeVolume = (state, action) => {
     return {
         ...state,
@@ -61,6 +69,7 @@ export const reducer = createReducer(
         ADD_NOTE: addNote,
         CHANGE_ZOOM: changeZoom,
         TOGGLE_PLAY: togglePlay,
+        STOP_PLAY: stopPlay,
         INCREASE_TIME: incTime,
         REMOVE_NOTE: removeNote
     }
