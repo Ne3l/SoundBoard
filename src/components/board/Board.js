@@ -20,11 +20,10 @@ class Board extends Component {
         return (
             <div className="board">
                 <Scales />
-                {this.props.play &&
-                    <div
-                        style={{ left: 30 + this.props.time * this.props.zoom }}
-                        className="tempoLine"
-                    />}
+                <div
+                    style={{ left: 30 + this.props.time * this.props.zoom }}
+                    className="tempoLine"
+                />
             </div>
         );
     }
