@@ -5,10 +5,14 @@ import './Scale.css';
 import Key from './key/Key.js';
 import Notes from './notes/Notes';
 
-const SCALES = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+const SCALES = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const PITCH = [2, 3, 4, 5, 6, 7];
 
-const NOTES = Array.prototype.concat(...SCALES.map(scale => PITCH.map(pitch => scale + pitch)));
+const NOTES = Array.prototype.concat(
+    ...PITCH.map(pitch => {
+        return SCALES.map(scale => scale + pitch);
+    })
+);
 
 const mapStateToProps = (state, props) => {
     return {
