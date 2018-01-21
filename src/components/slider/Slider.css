@@ -1,0 +1,14 @@
+.slider {
+    background-color: var(--nord7);
+    width: 100%;
+    height: 5px;
+}
+
+.ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: var(--nord10);
+    margin-top: -2.5px;
+}

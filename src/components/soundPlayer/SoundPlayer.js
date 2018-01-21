@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './SoundPlayer.css';
+import Slider from '../slider/Slider.js';
 // import teoria from 'teoria';
 
 const mapStateToProps = (state, props) => {
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         increaseTime() {
             dispatch({ type: 'INCREASE_TIME', time: 1 });
+        },
+        changeVolume(volume) {
+            dispatch({ type: 'CHANGE_VOLUME', volume });
         }
     };
 };
@@ -100,16 +104,21 @@ class SoundPlayer extends Component {
     render() {
         return (
             <div className="SoundPlayer">
-                <h2>
-                    Volume: {this.props.volume}
-                </h2>
-                <h2>
-                    Time : {this.formatTime()}
-                </h2>
-                <button onClick={this.props.togglePlay}>
+                <div className="TimeCounter">
+                    {this.formatTime()}
+                </div>
+                <Slider
+                    max={100}
+                    min={0}
+                    value={this.props.volume}
+                    onChange={this.props.changeVolume}
+                />
+                <button className="btn" onClick={this.props.togglePlay}>
                     {this.props.play ? 'Pause' : 'Play'}
                 </button>
-                <button onClick={this.props.stopPlay}>Stop</button>
+                <button className="btn" onClick={this.props.stopPlay}>
+                    Stop
+                </button>
             </div>
         );
     }

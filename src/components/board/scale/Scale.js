@@ -4,9 +4,12 @@ import './Scale.css';
 
 import Key from './key/Key.js';
 import Notes from './notes/Notes';
+import teoria from 'teoria';
 
-const SCALES = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
-const PITCH = [2, 3, 4, 5, 6, 7];
+var a4 = teoria.note('a');
+
+const SCALES = ['B', 'A#', 'A', 'G#', 'G', 'F#', 'F', 'E', 'D#', 'D', 'C#', 'C'];
+const PITCH = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
 const NOTES = Array.prototype.concat(
     ...PITCH.map(pitch => {
@@ -23,9 +26,6 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        changeZoom(zoom) {
-            dispatch({ type: 'CHANGE_ZOOM', zoom });
-        },
         addNote(scale, sec) {
             let type = this.notes.filter(e => e.sec === sec).length ? 'REMOVE_NOTE' : 'ADD_NOTE';
             let note = {
@@ -44,21 +44,9 @@ class Scale extends Component {
         return false;
     }
 
-    handleWheel = e => {
-        let zoom = this.props.zoom;
-        if (e.deltaY < 0) {
-            zoom = zoom + 1;
-        } else {
-            zoom = zoom - 1;
-        }
-        e.preventDefault();
-        e.stopPropagation();
-        this.props.changeZoom(Math.max(1, zoom));
-    };
-
     render() {
         return (
-            <div className="scales" onWheel={this.handleWheel}>
+            <div className="scales">
                 {NOTES.map(note => {
                     return (
                         <div key={note} className="scale">
